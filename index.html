@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+     /* Basic styles for the body */
+     body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+             align-items: center; 
+             height: 100vh;
+            margin: 0;
+        }
+
+        /* Container for the content */
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 300px;
+        }
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        /* Button styling */
+        #generateBtn {
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 10%;
+            transition: background-color 0.3s;
+            height: 10%;
+        }
+
+        #generateBtn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Input field styling */
+        #otpDisplay {
+            margin-top: 20px;
+            padding: 12px;
+            font-size: 18px;
+            width: 20%;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            text-align: center;
+            outline: none;
+        }
+
+        #otpDisplay:focus {
+            border-color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+    <h2>Generate OTP</h2><br>
+    <button id="generateBtn">Generate OTP</button><br>
+    <input type="text" id="otpDisplay">
+
+    
+    <script>
+  // Function to generate a random OTP of specified length
+  function generateOTP(length) {
+            let otp = '';
+            const characters = '0123456789'; // Only digits for OTP
+            const charactersLength = characters.length;
+
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * charactersLength);
+                otp += characters[randomIndex];
+            }
+
+            return otp;
+        }
+
+        // Add event listener to the button to generate OTP
+        document.getElementById('generateBtn').addEventListener('click', function() {
+            // Generate a 6-digit OTP
+            let otp = generateOTP(4);
+
+            // Display OTP in the #otpDisplay input
+            document.getElementById('otpDisplay').value= 'Your OTP is: ' + otp;
+        });
+    </script>
+</body>
+</html>
